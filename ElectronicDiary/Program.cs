@@ -1,9 +1,22 @@
+using ElectronicDiary.Infrastucture.Persistence;
+using Microsoft.EntityFrameworkCore;
+using ElectronicDiary.Infrastucture.Extensions;
+using ElectronicDiary.Infrastucture.Seeder;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddInfrastucture(builder.Configuration);
+
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+
+var seeder = scope.ServiceProvider.GetRequiredService<ElectronicDiarySeeder>();
+
+await seeder.Seed();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

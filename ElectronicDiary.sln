@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicDiary", "ElectronicDiary\ElectronicDiary.csproj", "{DD52E693-4433-41A6-8396-0D8D91A9FA59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicDiary", "ElectronicDiary\ElectronicDiary.csproj", "{DD52E693-4433-41A6-8396-0D8D91A9FA59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicDiary.Domain", "ElectronicDiary.Domain\ElectronicDiary.Domain.csproj", "{D86A2C06-C197-4DAD-9466-E0757FB3F0BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicDiary.Application", "ElectronicDiary.Application\ElectronicDiary.Application.csproj", "{22FAB16A-C347-4066-BDB1-F251B4279B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicDiary.Infrastucture", "ElectronicDiary.Infrastucture\ElectronicDiary.Infrastucture.csproj", "{2610267D-03B4-4C7B-B909-C4A013CBF204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{DD52E693-4433-41A6-8396-0D8D91A9FA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD52E693-4433-41A6-8396-0D8D91A9FA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD52E693-4433-41A6-8396-0D8D91A9FA59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D86A2C06-C197-4DAD-9466-E0757FB3F0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D86A2C06-C197-4DAD-9466-E0757FB3F0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D86A2C06-C197-4DAD-9466-E0757FB3F0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D86A2C06-C197-4DAD-9466-E0757FB3F0BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22FAB16A-C347-4066-BDB1-F251B4279B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22FAB16A-C347-4066-BDB1-F251B4279B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22FAB16A-C347-4066-BDB1-F251B4279B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22FAB16A-C347-4066-BDB1-F251B4279B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2610267D-03B4-4C7B-B909-C4A013CBF204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2610267D-03B4-4C7B-B909-C4A013CBF204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2610267D-03B4-4C7B-B909-C4A013CBF204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2610267D-03B4-4C7B-B909-C4A013CBF204}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
