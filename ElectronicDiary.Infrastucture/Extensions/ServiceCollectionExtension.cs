@@ -1,4 +1,6 @@
-﻿using ElectronicDiary.Infrastucture.Persistence;
+﻿using ElectronicDiary.Domain.Interfaces;
+using ElectronicDiary.Infrastucture.Persistence;
+using ElectronicDiary.Infrastucture.Repositories;
 using ElectronicDiary.Infrastucture.Seeder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +21,7 @@ namespace ElectronicDiary.Infrastucture.Extensions
                 options => options.UseSqlServer(configuration.GetConnectionString("MySchoolDiaryConnectionString")));
 
             services.AddScoped<ElectronicDiarySeeder>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
         }
     }
 }

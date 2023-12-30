@@ -1,6 +1,7 @@
-using ElectronicDiary.Infrastucture.Persistence;
-using Microsoft.EntityFrameworkCore;
+//using ElectronicDiary.Infrastucture.Persistence;
+//using Microsoft.EntityFrameworkCore;
 using ElectronicDiary.Infrastucture.Extensions;
+using ElectronicDiary.Application.Extensions;
 using ElectronicDiary.Infrastucture.Seeder;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddInfrastucture(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 

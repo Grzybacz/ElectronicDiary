@@ -15,6 +15,7 @@ namespace ElectronicDiary.Infrastucture.Persistence
         }
         public DbSet<School> Schools { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Student> Students { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,6 +24,11 @@ namespace ElectronicDiary.Infrastucture.Persistence
                 .HasOne(u => u.Address)
                 .WithOne(a => a.School)
                 .HasForeignKey<Address>(u => u.SchoolId);
+
+            modelBuilder.Entity<Student>()
+               .HasOne(u => u.Address)
+               .WithOne(a => a.Student)
+               .HasForeignKey<Student>(u => u.AddressId);
         }
 
     }

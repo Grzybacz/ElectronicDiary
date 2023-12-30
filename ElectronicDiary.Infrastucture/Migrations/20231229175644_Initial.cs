@@ -16,9 +16,8 @@ namespace ElectronicDiary.Infrastucture.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AddressId = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,7 +33,7 @@ namespace ElectronicDiary.Infrastucture.Migrations
                     NameCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SchoolId = table.Column<int>(type: "int", nullable: false)
+                    SchoolId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,15 +42,15 @@ namespace ElectronicDiary.Infrastucture.Migrations
                         name: "FK_Addresses_Schools_SchoolId",
                         column: x => x.SchoolId,
                         principalTable: "Schools",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_SchoolId",
                 table: "Addresses",
                 column: "SchoolId",
-                unique: true);
+                unique: true,
+                filter: "[SchoolId] IS NOT NULL");
         }
 
         /// <inheritdoc />

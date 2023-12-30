@@ -12,7 +12,10 @@ namespace ElectronicDiary.Domain.Entities
         public string? NameCity { get; set; }
         public string? Street { get; set; }
         public string? PostalCode { get; set; }
-        public School School { get; set; }
-        public int SchoolId { get; set; }
+        public School? School { get; set; }
+        public int? SchoolId { get; set; }
+        public Student? Student { get; set; }
+
+
     }
 }

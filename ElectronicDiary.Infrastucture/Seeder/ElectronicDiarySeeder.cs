@@ -21,24 +21,26 @@ namespace ElectronicDiary.Infrastucture.Seeder
         {
             if (await _dbcontext.Database.CanConnectAsync())
             {
-                if(!_dbcontext.Schools.Any())
+                if(!_dbcontext.Schools.Any() && !_dbcontext.Addresses.Any())
                 {
                     var school = new Domain.Entities.School()
                     {
-                        Name = "Carolinum",
+                        Name = "Carolinum School",
                         Type = "primary school",
 
                         Address = new()
-                    {
+                        {
                             NameCity = "Kraków",
                             Street = "Gimnazjalna",
-                            PostalCode = "31-100"
-
-                        }
+                            PostalCode = "31-100",                            
+                          
+                        }                       
+                                             
                     };
+
                     _dbcontext.Schools.Add(school);
-                    await _dbcontext.SaveChangesAsync();
-                
+                    await _dbcontext.SaveChangesAsync();                    
+
                 }
 
             }
