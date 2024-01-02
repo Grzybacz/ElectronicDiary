@@ -12,6 +12,11 @@ namespace ElectronicDiary.Controllers
             _studentServices = studentServices;  
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task <IActionResult> Create(Domain.Entities.Student student)
         {
