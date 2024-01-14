@@ -1,4 +1,7 @@
-﻿<h1> Add new student</h1>
+﻿@using ElectronicDiary.Domain.Entities
+@model Student
+
+<h1> Add new student</h1>
 
 <hr />
 
@@ -6,19 +9,22 @@
     <div class="col-md-3">
         <form action="/Student/Create" method="post">
             <div class= "form-group mb-3">
-                <label class="control-label" for="StudentName">Student name</label>
-                <input class="form-control" type="text" id= "StudentName" name="StudentName">
+                <label class="control-label" asp-for ="StudentName">Student name</label>
+                <input class="form-control" type="text" asp-for ="StudentName">
+                <span asp-validation-for ="StudentName" class ="text-denger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label class="control-label" for="StudentSurname">Student surname</label>
-                <input class="form-control" type="text" id="StudentSurname" name="StudentSurname">
+                <label class="control-label" asp-for ="StudentSurname">Student surname</label>
+                <input class="form-control" type="text" asp-for ="StudentSurname">
+                <span asp-validation-for="StudentSurname" class ="text-denger"></span>
             </div>
 
 
             <div class="form-group mb-3">
-                <label class="control-label" for="DateOfBirth">Date of birth</label>
-                <input class="form-control" type="text" id="DateOfBirth" name="DateOfBirth">
+                <label class="control-label" asp-for ="DateOfBirth">Date of birth</label>
+                <input class="form-control" type="text" asp-for="DateOfBirth" value="dd-mm-rrrr">
+                <span asp-validation-for="DateOfBirth" class ="text-denger"></span>
             </div>
 
             <div class="form-group mb-3">
@@ -46,3 +52,8 @@
 
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

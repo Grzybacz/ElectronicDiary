@@ -1,5 +1,5 @@
-﻿using ElectronicDiary.Domain.Interfaces;
-
+﻿using ElectronicDiary.Domain.Entities;
+using ElectronicDiary.Domain.Interfaces;
 
 namespace ElectronicDiary.Application.Services
 {
@@ -15,6 +15,12 @@ namespace ElectronicDiary.Application.Services
         {
             
             await _studentRepository.Create(student);
+        }
+
+        public async Task<IEnumerable<Student>> GetAll()
+        {
+            var students = await _studentRepository.GetAll();
+            return students;
         }
     }
 }

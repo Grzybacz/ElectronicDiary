@@ -12,6 +12,12 @@ namespace ElectronicDiary.Controllers
             _studentServices = studentServices;  
         }
 
+        public async Task<IActionResult> Index()
+        {
+            var student = await _studentServices.GetAll();
+            return View(student);
+        }
+
         public ActionResult Create()
         {
             return View();
@@ -20,8 +26,12 @@ namespace ElectronicDiary.Controllers
         [HttpPost]
         public async Task <IActionResult> Create(Domain.Entities.Student student)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(student);
+            }
             await _studentServices.Create(student);
-            return RedirectToAction(nameof(Create)); //ToDo refactor
+            return RedirectToAction(nameof(Index)); //ToDo refactor
         }
     }
 }

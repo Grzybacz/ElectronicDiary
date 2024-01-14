@@ -1,7 +1,10 @@
-﻿using ElectronicDiary.Domain.Interfaces;
+﻿using ElectronicDiary.Application.Validator;
+using ElectronicDiary.Domain.Interfaces;
 using ElectronicDiary.Infrastucture.Persistence;
 using ElectronicDiary.Infrastucture.Repositories;
 using ElectronicDiary.Infrastucture.Seeder;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +25,8 @@ namespace ElectronicDiary.Infrastucture.Extensions
 
             services.AddScoped<ElectronicDiarySeeder>();
             services.AddScoped<IStudentRepository, StudentRepository>();
+
+           
         }
     }
 }
