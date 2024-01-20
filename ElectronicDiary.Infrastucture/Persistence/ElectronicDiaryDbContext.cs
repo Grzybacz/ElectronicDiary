@@ -26,9 +26,16 @@ namespace ElectronicDiary.Infrastucture.Persistence
                 .HasForeignKey<Address>(u => u.SchoolId);
 
             modelBuilder.Entity<Student>()
+              .Property(m => m.Id)
+              .ValueGeneratedOnAdd(); 
+            
+            modelBuilder.Entity<Student>()
                .HasOne(u => u.Address)
                .WithOne(a => a.Student)
                .HasForeignKey<Student>(u => u.AddressId);
+
+
+              
         }
 
     }

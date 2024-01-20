@@ -22,5 +22,21 @@ namespace ElectronicDiary.Application.Services
             var students = await _studentRepository.GetAll();
             return students;
         }
+
+        public async Task<Student> GetDetails(int id)
+        {
+            var studentDetails = await _studentRepository.GetDetails(id);
+            return studentDetails;
+        }
+        public async Task Edit(Student student)
+        {
+
+            await _studentRepository.Edit(student);
+        }
+
+        public async Task Delete(int id)
+        {
+            await _studentRepository.Delete(id);
+        }
     }
 }

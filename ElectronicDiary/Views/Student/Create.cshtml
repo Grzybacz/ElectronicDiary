@@ -23,7 +23,7 @@
 
             <div class="form-group mb-3">
                 <label class="control-label" asp-for ="DateOfBirth">Date of birth</label>
-                <input class="form-control" type="text" asp-for="DateOfBirth" value="dd-mm-rrrr">
+                <input class="form-control" type="date" asp-for="DateOfBirth" pattern="\d{2}-\d{2}-\d{4}>
                 <span asp-validation-for="DateOfBirth" class ="text-denger"></span>
             </div>
 
@@ -38,7 +38,7 @@
             </div>
 
             <div class="form-group mb-3">
-                <label class="control-label" for="PostalCode ">PostalCode </label>
+                <label class="control-label" for="PostalCode ">Postal code </label>
                 <input class="form-control" type="text" id="PostalCode " name="Address.PostalCode" >
             </div>
 
