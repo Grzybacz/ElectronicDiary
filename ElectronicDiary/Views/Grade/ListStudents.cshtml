@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ElectronicDiary.Domain.Entities.Student>
+
+@{
+    ViewData["Title"] = "ListStudentsGrade";
+}
+
+<h1 class="text-bg-primary">Student List</h1>
+<p>Subject Id: @ViewBag.SubjectId</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentSurname)
+            </th>      
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentSurname)
+                </td>                
+                
+                <td>                   
+                    <form >
+                        <input type="hidden" name="subjectId" value="@ViewBag.SubjectId" />
+                        <button onclick="openPopup('@item.Id', '@ViewBag.SubjectId')" type="submit" name="studentId" value="@item.Id" class="btn btn-primary"><i class="bi bi-plus"></i>Add</button>
+                        
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>    
+    function openPopup(studentId, subjectId) {        
+        var url = '/Grade/AddGradeStudent?studentId=' + studentId + '&subjectId=' + subjectId;
+       
+        var popupOptions = 'width=700,height=400,scrollbars=yes, menubar=no';
+        
+        window.open(url, 'PopupWindow', popupOptions);
+    }
+</script>
+
+<div>
+    <a asp-action="Index">Back to Subject List</a>
+</div>

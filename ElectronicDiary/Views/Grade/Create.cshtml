@@ -10,18 +10,21 @@
 </head>
 <body> 
 
-    <p>Subject Id: @ViewBag.SubjectId</p>    
+    <p>Subject Id: @ViewBag.SubjectId</p> 
+    <p>Student Id: @ViewBag.StudentId</p>
     <form action="/Grade/AddGrade" method="post">
      
         <br />
 
-        <label for="grade">Wprowadź Ocenę:</label>
+        <label for="grade">Add grade: </label>
         <input type="text" asp-controller="Grade" asp-action="AddGrade" asp-for="WriteGrade" />
         <input type="hidden" name="subjectId" value=@ViewBag.SubjectId />
+        <input type="hidden" name="studentId" value=@ViewBag.StudentId />
 
         <br />
+        <br />
 
-        <button type="submit">Dodaj Ocenę</button>
+        <button class="btn btn-primary type="submit">Save</button>
 
        
     </form>
@@ -29,3 +32,4 @@
 
 </body>
 </html>
+

@@ -25,5 +25,11 @@ namespace ElectronicDiary.Application.Services
         {
             await _gradeRepository.AddGrade(grade, gradeSubject);
         }
+
+        public async Task<List<Student>> GetAllStudents()
+        {
+            var students = await _gradeRepository.GetAllStudents();
+            return students;
+        }
     }
 }

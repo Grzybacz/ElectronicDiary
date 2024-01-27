@@ -11,5 +11,8 @@ namespace ElectronicDiary.Domain.Interfaces
     {
         Task<List<Subject>> GetAllSubjects();
         Task AddGrade(Grade grade, GradeSubject gradeSubject);
+        Task<List<Student>> GetAllStudents();
+
+       
     }
 }

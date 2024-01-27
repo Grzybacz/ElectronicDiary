@@ -28,8 +28,10 @@ namespace ElectronicDiary.Infrastucture.Repositories
             _dbcontext.GradesSubjects.Add(gradeSub);
             await _dbcontext.SaveChangesAsync();
 
-
+            
         }
+        public Task<List<Student>> GetAllStudents()
+        => _dbcontext.Students.ToListAsync();
 
     }
 }

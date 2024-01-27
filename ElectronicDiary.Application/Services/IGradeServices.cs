@@ -8,5 +8,7 @@ namespace ElectronicDiary.Application.Services
         public Task<List<Subject>> GetAllSubjects();
 
         public Task AddGrade(Grade grade, GradeSubject gradeSubject);
+
+        public Task<List<Student>> GetAllStudents();
     }
 }

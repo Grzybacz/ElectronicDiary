@@ -22,18 +22,27 @@ namespace ElectronicDiary.Controllers
         public async Task<IActionResult> AddGrade(int subjectId)
         {
             ViewBag.SubjectId = subjectId;
-           
+            var student = await _gradeServices.GetAllStudents();
+
+            return View("ListStudents", student);
+        }
+
+        public async Task<IActionResult> AddGradeStudent(int subjectId, int studentId)
+        {
+            ViewBag.SubjectId = subjectId;
+            ViewBag.StudentId = studentId;
+
             return View("Create");
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddGrade(int subjectId, string writeGrade)
+        public async Task<IActionResult> AddGrade(int subjectId, string writeGrade, int studentId)
         {
            
             Grade grade = new Grade
             {
                 WriteGrade = writeGrade, 
-                StudentId = 4,
+                StudentId = studentId,
                 GradeTemplateId =1,
                 CreatedAt = DateTime.UtcNow,
                 
