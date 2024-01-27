@@ -12,7 +12,8 @@ namespace ElectronicDiary.Application.Extensions
         public static void AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IStudentServices, StudentServices >();
-            
+            services.AddScoped<IGradeServices, GradeServices>();
+
             services.AddValidatorsFromAssemblyContaining<ElectronicDiaryValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();

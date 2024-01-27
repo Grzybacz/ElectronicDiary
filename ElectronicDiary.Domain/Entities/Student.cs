@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace ElectronicDiary.Domain.Entities
         public DateTime DateOfBirth { get; set; } 
         public Address? Address { get; set; }
         public int AddressId { get; set; }
+        [BindNever]
+        public IEnumerable<Grade> Grade { get; set; }
 
 
     }

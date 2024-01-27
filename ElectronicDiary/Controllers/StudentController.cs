@@ -28,6 +28,7 @@ namespace ElectronicDiary.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Student student)
         {
+            ModelState.Remove("Grade");
             if (!ModelState.IsValid)
             {
                 return View(student);

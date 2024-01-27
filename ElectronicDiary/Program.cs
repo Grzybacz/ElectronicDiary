@@ -1,5 +1,3 @@
-//using ElectronicDiary.Infrastucture.Persistence;
-//using Microsoft.EntityFrameworkCore;
 using ElectronicDiary.Infrastucture.Extensions;
 using ElectronicDiary.Application.Extensions;
 using ElectronicDiary.Infrastucture.Seeder;

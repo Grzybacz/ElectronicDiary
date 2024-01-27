@@ -5,7 +5,7 @@
 namespace ElectronicDiary.Infrastucture.Migrations
 {
     /// <inheritdoc />
-    public partial class StudentProperty : Migration
+    public partial class Seed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,0 +1,31 @@
+﻿@*model IEnumerable<ElectronicDiary.Domain.Entities.Grade>*@
+@model ElectronicDiary.Domain.Entities.Grade
+
+
+<h1>Add Grade</h1>
+
+<html>
+<head>
+    <title>Wprowadzanie Oceny</title>
+</head>
+<body> 
+
+    <p>Subject Id: @ViewBag.SubjectId</p>    
+    <form action="/Grade/AddGrade" method="post">
+     
+        <br />
+
+        <label for="grade">Wprowadź Ocenę:</label>
+        <input type="text" asp-controller="Grade" asp-action="AddGrade" asp-for="WriteGrade" />
+        <input type="hidden" name="subjectId" value=@ViewBag.SubjectId />
+
+        <br />
+
+        <button type="submit">Dodaj Ocenę</button>
+
+       
+    </form>
+    
+
+</body>
+</html>

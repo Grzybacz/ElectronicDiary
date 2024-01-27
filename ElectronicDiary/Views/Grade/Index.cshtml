@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ElectronicDiary.Domain.Entities.Subject>
+
+
+
+<h1>Choose subject</h1>
+
+<ul>
+    @foreach (var subject in Model)
+    {
+        <li>
+            @subject.Name
+            <a asp-controller="Grade" asp-action="AddGrade" asp-route-subjectId="@subject.Id" >
+                <i class="bi bi-plus-circle"></i>
+            </a>
+        </li>
+    }
+</ul>
+
+
+
+
