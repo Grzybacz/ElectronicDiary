@@ -21,15 +21,21 @@ namespace ElectronicDiary.Application.Services
             return subjects;
         }
 
-        public async Task AddGrade(Grade grade, GradeSubject gradeSubject)
+        public async Task AddGrade(Grade grade)
         {
-            await _gradeRepository.AddGrade(grade, gradeSubject);
+            await _gradeRepository.AddGrade(grade);
         }
 
         public async Task<List<Student>> GetAllStudents()
         {
             var students = await _gradeRepository.GetAllStudents();
             return students;
+        }
+
+        public async Task<IEnumerable<GradeTemplate>> GetGradesTemplate()
+        {
+            var gradesign = await _gradeRepository.GetGradesTemplate();
+            return gradesign;
         }
     }
 }

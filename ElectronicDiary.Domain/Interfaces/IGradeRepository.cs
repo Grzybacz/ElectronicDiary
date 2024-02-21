@@ -10,9 +10,11 @@ namespace ElectronicDiary.Domain.Interfaces
     public interface IGradeRepository
     {
         Task<List<Subject>> GetAllSubjects();
-        Task AddGrade(Grade grade, GradeSubject gradeSubject);
+        Task AddGrade(Grade grade);
         Task<List<Student>> GetAllStudents();
+        Task<IEnumerable<GradeTemplate>> GetGradesTemplate();
 
-       
+
+
     }
 }

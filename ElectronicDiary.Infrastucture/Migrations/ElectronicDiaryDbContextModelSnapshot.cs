@@ -68,6 +68,9 @@ namespace ElectronicDiary.Infrastucture.Migrations
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
                     b.Property<string>("WriteGrade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -78,27 +81,9 @@ namespace ElectronicDiary.Infrastucture.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Grades");
-                });
-
-            modelBuilder.Entity("ElectronicDiary.Domain.Entities.GradeSubject", b =>
-                {
-                    b.Property<int>("GradeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PublicationDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getutcdate()");
-
-                    b.HasKey("GradeId", "SubjectId");
-
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("GradesSubjects");
+                    b.ToTable("Grades");
                 });
 
             modelBuilder.Entity("ElectronicDiary.Domain.Entities.GradeTemplate", b =>
@@ -210,28 +195,17 @@ namespace ElectronicDiary.Infrastucture.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Student");
-
-                    b.Navigation("Template");
-                });
-
-            modelBuilder.Entity("ElectronicDiary.Domain.Entities.GradeSubject", b =>
-                {
-                    b.HasOne("ElectronicDiary.Domain.Entities.Grade", "Grade")
-                        .WithMany()
-                        .HasForeignKey("GradeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ElectronicDiary.Domain.Entities.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("Grades")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Grade");
+                    b.Navigation("Student");
 
                     b.Navigation("Subject");
+
+                    b.Navigation("Template");
                 });
 
             modelBuilder.Entity("ElectronicDiary.Domain.Entities.Student", b =>
@@ -263,6 +237,11 @@ namespace ElectronicDiary.Infrastucture.Migrations
             modelBuilder.Entity("ElectronicDiary.Domain.Entities.Student", b =>
                 {
                     b.Navigation("Grade");
+                });
+
+            modelBuilder.Entity("ElectronicDiary.Domain.Entities.Subject", b =>
+                {
+                    b.Navigation("Grades");
                 });
 #pragma warning restore 612, 618
         }

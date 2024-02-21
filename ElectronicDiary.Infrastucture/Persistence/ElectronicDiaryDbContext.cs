@@ -15,7 +15,7 @@ namespace ElectronicDiary.Infrastucture.Persistence
         public DbSet<Subject> Subjects { get; set; }        
         public DbSet<Grade> Grades { get; set; }
         public DbSet<GradeTemplate> GradeTemplates { get; set; }
-        public DbSet<GradeSubject> GradesSubjects { get; set; }
+        //public DbSet<GradeSubject> GradesSubjects { get; set; }
 
 
 
@@ -40,26 +40,10 @@ namespace ElectronicDiary.Infrastucture.Persistence
                 .WithOne(g => g.Student)
                 .HasForeignKey(g => g.StudentId);
 
-            modelBuilder.Entity<Subject>()
-               .HasMany(s => s.Grades)
-               .WithMany(g => g.Subjects)
-               .UsingEntity<GradeSubject>(
-                w => w.HasOne(wit=>wit.Grade)
-                .WithMany()
-                .HasForeignKey(wit => wit.GradeId),
-
-                w => w.HasOne(wit => wit.Subject)
-                .WithMany()
-                .HasForeignKey(wit => wit.SubjectId),
-
-                wit =>
-                {
-                    wit.HasKey(x => new { x.GradeId, x.SubjectId });
-                    wit.Property(x => x.PublicationDate).HasDefaultValueSql("getutcdate()");
-                }
-                
-                
-                );
+            modelBuilder.Entity<Grade>()
+            .HasOne(g => g.Subject)
+            .WithMany(s => s.Grades)
+            .HasForeignKey(g => g.SubjectId);
 
 
             modelBuilder.Entity<Grade>()

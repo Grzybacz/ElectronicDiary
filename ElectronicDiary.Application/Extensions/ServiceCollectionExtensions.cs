@@ -13,6 +13,7 @@ namespace ElectronicDiary.Application.Extensions
         {
             services.AddScoped<IStudentServices, StudentServices >();
             services.AddScoped<IGradeServices, GradeServices>();
+            services.AddScoped<IStatisticsServices, StatisticsServices>();
 
             services.AddValidatorsFromAssemblyContaining<ElectronicDiaryValidator>()
                 .AddFluentValidationAutoValidation()

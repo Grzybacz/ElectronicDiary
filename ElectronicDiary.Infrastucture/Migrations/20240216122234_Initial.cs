@@ -12,6 +12,20 @@ namespace ElectronicDiary.Infrastucture.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "GradeTemplates",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GradeSign = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GradeValue = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GradeTemplates", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Schools",
                 columns: table => new
                 {
@@ -88,14 +102,21 @@ namespace ElectronicDiary.Infrastucture.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    grade = table.Column<int>(type: "int", nullable: false),
+                    WriteGrade = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    SubjectId = table.Column<int>(type: "int", nullable: true)
+                    SubjectId = table.Column<int>(type: "int", nullable: false),
+                    GradeTemplateId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Grades", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Grades_GradeTemplates_GradeTemplateId",
+                        column: x => x.GradeTemplateId,
+                        principalTable: "GradeTemplates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Grades_Students_StudentId",
                         column: x => x.StudentId,
@@ -104,29 +125,6 @@ namespace ElectronicDiary.Infrastucture.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Grades_Subjects_SubjectId",
-                        column: x => x.SubjectId,
-                        principalTable: "Subjects",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "GradesSubjects",
-                columns: table => new
-                {
-                    GradeId = table.Column<int>(type: "int", nullable: false),
-                    SubjectId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GradesSubjects", x => new { x.GradeId, x.SubjectId });
-                    table.ForeignKey(
-                        name: "FK_GradesSubjects_Grades_GradeId",
-                        column: x => x.GradeId,
-                        principalTable: "Grades",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_GradesSubjects_Subjects_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subjects",
                         principalColumn: "Id",
@@ -141,6 +139,11 @@ namespace ElectronicDiary.Infrastucture.Migrations
                 filter: "[SchoolId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Grades_GradeTemplateId",
+                table: "Grades",
+                column: "GradeTemplateId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Grades_StudentId",
                 table: "Grades",
                 column: "StudentId");
@@ -148,11 +151,6 @@ namespace ElectronicDiary.Infrastucture.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Grades_SubjectId",
                 table: "Grades",
-                column: "SubjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_GradesSubjects_SubjectId",
-                table: "GradesSubjects",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
@@ -166,10 +164,10 @@ namespace ElectronicDiary.Infrastucture.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GradesSubjects");
+                name: "Grades");
 
             migrationBuilder.DropTable(
-                name: "Grades");
+                name: "GradeTemplates");
 
             migrationBuilder.DropTable(
                 name: "Students");

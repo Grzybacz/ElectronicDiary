@@ -1,6 +1,5 @@
 ﻿using ElectronicDiary.Application.Services;
 using ElectronicDiary.Domain.Entities;
-using ElectronicDiary.Infrastucture.Migrations;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -31,30 +30,27 @@ namespace ElectronicDiary.Controllers
         {
             ViewBag.SubjectId = subjectId;
             ViewBag.StudentId = studentId;
+            var gradesign = await _gradeServices.GetGradesTemplate();
 
-            return View("Create");
+            return View("Create", gradesign);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddGrade(int subjectId, string writeGrade, int studentId)
+        public async Task<IActionResult> AddGrade(int subjectId, string selectedGrade, int studentId)
         {
            
             Grade grade = new Grade
             {
-                WriteGrade = writeGrade, 
-                StudentId = studentId,
-                GradeTemplateId =1,
+                WriteGrade = selectedGrade, 
+                StudentId = studentId,  
+                SubjectId = subjectId,
                 CreatedAt = DateTime.UtcNow,
                 
             };
 
-            var gradeSubject = new Domain.Entities.GradeSubject
-            {
-                SubjectId = subjectId,                
-                PublicationDate = DateTime.UtcNow
-            };
+            
 
-            await _gradeServices.AddGrade( grade, gradeSubject);
+            await _gradeServices.AddGrade( grade);
 
             return RedirectToAction("Index");
         }

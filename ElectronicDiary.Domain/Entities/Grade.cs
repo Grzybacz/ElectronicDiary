@@ -13,7 +13,8 @@ namespace ElectronicDiary.Domain.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public Student? Student { get; set; }
         public int StudentId { get; set; }
-        public List<Subject> Subjects { get; set; }
+        public Subject? Subject { get; set; }
+        public int SubjectId { get; set; }
         public GradeTemplate Template { get; set; }
         public int GradeTemplateId { get; set; }
     }

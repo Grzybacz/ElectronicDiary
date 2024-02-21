@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ElectronicDiary.Domain.Entities.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-bg-primary">Student List</h1>
+
+<p>
+    <div class="cpl-1 text-end">
+        <a asp-action="Create" class="btn btn-secondary">
+            <i class="bi bi-plus-circle"></i> Add Student
+        </a>
+    </div>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentSurname)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentSurname)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                @* <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>*@
+                <td>
+                    <div class="w-65 btn-group" role="group">
+                        <a asp-controller="Student" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-2">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a asp-controller="Student" asp-action="Details" asp-route-id="@item.Id" class="btn btn-success mx-2">
+                            <i class="bi bi-info-circle"></i> Details
+                        </a>
+                        <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning mx-2">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

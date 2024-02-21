@@ -14,7 +14,7 @@ namespace ElectronicDiary.Application.Validator
             return existingStudent.All(p => p.StudentName != name);
         }
 
-        public ElectronicDiaryValidator(IStudentRepository repository)
+        public ElectronicDiaryValidator()
         {
             RuleFor(c => c.StudentName)
            .NotEmpty()

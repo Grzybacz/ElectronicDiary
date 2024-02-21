@@ -7,8 +7,10 @@ namespace ElectronicDiary.Application.Services
     {
         public Task<List<Subject>> GetAllSubjects();
 
-        public Task AddGrade(Grade grade, GradeSubject gradeSubject);
+        public Task AddGrade(Grade grade);
 
         public Task<List<Student>> GetAllStudents();
+
+        public Task<IEnumerable<GradeTemplate>> GetGradesTemplate();
     }
 }

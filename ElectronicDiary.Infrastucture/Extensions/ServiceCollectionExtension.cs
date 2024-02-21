@@ -26,6 +26,7 @@ namespace ElectronicDiary.Infrastucture.Extensions
             services.AddScoped<ElectronicDiarySeeder>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IGradeRepository, GradeRepository>();
+            services.AddScoped<IStatisticsRepository, StatisticsRepository>();
 
 
         }

@@ -1,5 +1,5 @@
-﻿@*model IEnumerable<ElectronicDiary.Domain.Entities.Grade>*@
-@model ElectronicDiary.Domain.Entities.Grade
+﻿@*@model ElectronicDiary.Domain.Entities.Grade*@
+@model IEnumerable<ElectronicDiary.Domain.Entities.GradeTemplate>
 
 
 <h1>Add Grade</h1>
@@ -16,8 +16,14 @@
      
         <br />
 
-        <label for="grade">Add grade: </label>
-        <input type="text" asp-controller="Grade" asp-action="AddGrade" asp-for="WriteGrade" />
+        <label for="grade">Add grade:  </label>
+        <select name="selectedGrade">
+            @foreach (var opcja in Model)
+            {
+                <option value="@opcja.GradeSign">@opcja.GradeSign</option>
+            }
+        </select>
+        @*<input type="text" asp-controller="Grade" asp-action="AddGrade" asp-for="WriteGrade" />*@
         <input type="hidden" name="subjectId" value=@ViewBag.SubjectId />
         <input type="hidden" name="studentId" value=@ViewBag.StudentId />
 
