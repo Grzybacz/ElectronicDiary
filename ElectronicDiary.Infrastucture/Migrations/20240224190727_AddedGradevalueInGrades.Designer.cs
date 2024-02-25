@@ -4,6 +4,7 @@ using ElectronicDiary.Infrastucture.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElectronicDiary.Infrastucture.Migrations
 {
     [DbContext(typeof(ElectronicDiaryDbContext))]
-    partial class ElectronicDiaryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240224190727_AddedGradevalueInGrades")]
+    partial class AddedGradevalueInGrades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

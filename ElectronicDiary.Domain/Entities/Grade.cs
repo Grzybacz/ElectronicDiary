@@ -17,5 +17,7 @@ namespace ElectronicDiary.Domain.Entities
         public int SubjectId { get; set; }
         public GradeTemplate Template { get; set; }
         public int GradeTemplateId { get; set; }
+        public double GradeValue { get; set; }
     }
+
 }

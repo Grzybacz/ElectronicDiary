@@ -55,10 +55,10 @@ namespace ElectronicDiary.Controllers
         public async Task<IActionResult> EditPost(Student student)
         {
 
-            if (!ModelState.IsValid)
-            {
-                return View(student);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(student);
+            //}
             await _studentServices.Edit(student);
             return RedirectToAction(nameof(Index)); //ToDo refactor
 

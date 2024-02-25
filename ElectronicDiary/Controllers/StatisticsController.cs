@@ -19,7 +19,8 @@ namespace ElectronicDiary.Controllers
         public async Task<IActionResult> GetGrades(int studentId)
         {
             var student = await _statisticsServices.GetStudentGrades(studentId);
-            ViewBag.studentId = student;
+            
+            ViewBag.studentId = student;            
             return View("SelectedStudentGrades", student);
         }
     }

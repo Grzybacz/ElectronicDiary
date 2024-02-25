@@ -18,9 +18,11 @@ namespace ElectronicDiary.Infrastucture.Repositories
         public async Task AddGrade(Grade grade)
         {
             var idtemplate = _dbcontext.GradeTemplates.FirstOrDefault(x => x.GradeSign == grade.WriteGrade);
+           
             if (idtemplate != null)
             {
-                grade.GradeTemplateId = idtemplate.Id; // Przypisz wartość do właściwości obiektu Grade.
+                grade.GradeTemplateId = idtemplate.Id;
+                grade.GradeValue = idtemplate.GradeValue; // Przypisz wartość do właściwości obiektu Grade.
             }
             _dbcontext.Grades.Add(grade);
             await _dbcontext.SaveChangesAsync();
